@@ -8,6 +8,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 from tqdm import tqdm
+import time
 
 
 temp_path = os.path.join(os.getcwd(), 'temp')
@@ -68,7 +69,7 @@ class Book:
 
     def makePdf(self, pdfpath):
         Pages = [f for f in listdir(self.imgs_path) if isfile(join(self.imgs_path, f))]
-        listPages = tqdm(Pages, "Creando PDF  ", unit="Pagina", leave=False)
+        listPages = tqdm(Pages, "Create PDF  ", unit="Page", leave=False)
         if Pages:
             pdfpdf_file_path = os.path.join(pdfpath, f"{self.label}.pdf")
 
@@ -95,22 +96,25 @@ class Book:
 
 
     def download_image(self, url, img_path):
+        time.sleep(5)
         urllib.request.urlretrieve(url, img_path)
 
     def download_book(self, list):
         for index, url in enumerate(list):
             img_path = self.make_img_path(index, self.imgs_path)
+            time.sleep(5)
             self.download_image(url, img_path)
 
 
     def start_download(self, link_list, label):
-        tq_list = tqdm(link_list, f"Scaricando {label}  ", unit="pagina", leave=False)
+        tq_list = tqdm(link_list, f"Downloading {label}  ", unit="page", leave=False)
         self.download_book(tq_list)
+        time.sleep(5)
         tq_list.close()
 
 
 
-print(f"## Numero di libri da scaricare: {len(lista_link_libri)}\n")
+print(f"## Number of books to download: {len(lista_link_libri)}\n")
 for index, link in enumerate(lista_link_libri):
     book = Book(link)
     try:
@@ -124,14 +128,15 @@ for index, link in enumerate(lista_link_libri):
         book.makePdf(pdfpath)
 
         print(f"##################################\n"
-              f"####  Libro N. {index + 1}\n"
-              f"####  Titolo: {book.label}\n"
-              f"####  Scaricato con successo\n"
+              f"####  Book N. {index + 1}\n"
+              f"####  Title: {book.label}\n"
+              f"####  Downloaded successfully\n"
               f"##################################\n")
-    except:
-        print(f"Un errore ha impedito di scaricare {book.label}")
+    except Exception as e:
+        print(f"An error prevented downloading {book.label}")
+        print(e)
 
 shutil.rmtree(temp_path)
 
-input("Tutti i libri sono stati scaricati.\n\n"
-      "Premere un tasto qualsiasi per chiudere il programma")
+input("All books have been downloaded.\n\n"
+      "Press any key to close the program")

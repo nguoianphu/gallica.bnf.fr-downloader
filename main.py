@@ -133,6 +133,7 @@ for index, link in enumerate(lista_link_libri):
     except Exception as e:
         print(f"An error prevented downloading {book.label}")
         print(e)
+        exit 1
 
 shutil.rmtree(temp_path)
 

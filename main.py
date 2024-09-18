@@ -96,7 +96,6 @@ class Book:
 
 
     def download_image(self, url, img_path):
-        time.sleep(5)
         urllib.request.urlretrieve(url, img_path)
 
     def download_book(self, list):
@@ -109,7 +108,6 @@ class Book:
     def start_download(self, link_list, label):
         tq_list = tqdm(link_list, f"Downloading {label}  ", unit="page", leave=False)
         self.download_book(tq_list)
-        time.sleep(5)
         tq_list.close()
 
 

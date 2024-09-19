@@ -140,6 +140,6 @@ for index, link in enumerate(lista_link_libri):
         print(e)
         exit(1)
 
-# shutil.rmtree(temp_path)
+shutil.rmtree(temp_path)
 
 print("All books have been downloaded.")

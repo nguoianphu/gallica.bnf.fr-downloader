@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import shutil
 import urllib.request
 from fpdf import FPDF
@@ -68,7 +71,7 @@ class Book:
         return bookpath
 
     def makePdf(self, pdfpath):
-        Pages = [f for f in listdir(self.imgs_path) if isfile(join(self.imgs_path, f))]
+        Pages = [f for f in sorted(listdir(self.imgs_path)) if isfile(join(self.imgs_path, f))]
         listPages = tqdm(Pages, "Create PDF  ", unit="Page", leave=False)
         if Pages:
             pdfpdf_file_path = os.path.join(pdfpath, f"{self.label}.pdf")
@@ -96,6 +99,7 @@ class Book:
 
 
     def download_image(self, url, img_path):
+        time.sleep(5)
         urllib.request.urlretrieve(url, img_path)
 
     def download_book(self, list):
@@ -133,7 +137,7 @@ for index, link in enumerate(lista_link_libri):
     except Exception as e:
         print(f"An error prevented downloading {book.label}")
         print(e)
-        exit 1
+        exit(1)
 
 # shutil.rmtree(temp_path)
 

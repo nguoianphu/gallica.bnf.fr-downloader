@@ -20,7 +20,7 @@ if not os.path.exists(temp_path):
 
 with open('links.txt') as f:
     content = f.readlines()
-content = [x.strip() for x in content]
+content = [x.strip() for x in content if not x.startswith('#')]
 lista_link_libri = content
 
 
@@ -118,6 +118,7 @@ class Book:
 
 print(f"## Number of books to download: {len(lista_link_libri)}\n")
 for index, link in enumerate(lista_link_libri):
+    print(link)
     book = Book(link)
     try:
         link_list = book.get_link_list()
@@ -141,5 +142,4 @@ for index, link in enumerate(lista_link_libri):
 
 # shutil.rmtree(temp_path)
 
-input("All books have been downloaded.\n\n"
-      "Press any key to close the program")
+print("All books have been downloaded.")

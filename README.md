@@ -1,4 +1,4 @@
-# Download from Gallica
+# Download book from Gallica and make PDF
 
 ```
 pip install -r requirements.txt

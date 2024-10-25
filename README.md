@@ -1,11 +1,13 @@
 # Download book from Gallica and make PDF
 
+Install requirements
 ```
 pip install -r requirements.txt
 
 ```
 ## Edit link in __links.txt__
 
+Then run
 ```
 python main.py
 

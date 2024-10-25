@@ -58,7 +58,11 @@ find . -printf '%p\n' -name '*.pdf' -exec ocrmypdf $OPTIONS '{}' '{}' \;
 ## Optimize
 
 ### Installing the JBIG2 encoder
+
 https://ocrmypdf.readthedocs.io/en/latest/jbig2.html#jbig2-lossy
+
+https://github.com/ocrmypdf/OCRmyPDF/blob/main/.docker/Dockerfile
+
 ```
 
 sudo apt install autotools-dev automake libtool libleptonica-dev gcc
@@ -76,7 +80,7 @@ sudo make install
 
 ```
 export TMPDIR=$HOME/tmpdir
-export OPTIONS=' -l chi_tra_vert --jobs 2 --redo-ocr  --tesseract-timeout 600 --oversample DPI --optimize 2 --jbig2-lossy --output-type pdf '
+export OPTIONS=' -l chi_tra_vert --jobs 2 --redo-ocr  --tesseract-timeout 600 --optimize 2 --jbig2-lossy --output-type pdf '
 
 FILE="your_pdf_file.pdf"
 ocrmypdf $OPTIONS "$FILE" "ocr_${FILE}"

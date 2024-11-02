@@ -33,7 +33,12 @@ sudo apt update --allow-insecure-repositories
 
 # https://ocrmypdf.readthedocs.io/en/latest/languages.html#lang-packs
 # Display a list of all Tesseract language packs
+# Choose the -best version
 sudo apt-cache search tesseract-ocr
+sudo apt-cache search tesseract-ocr | grep Chinese
+# get tesseract-ocr-chi-tra-vert-best - tesseract-ocr language files for Chinese - Traditional (vertical) (best)
+sudo apt-cache search tesseract-ocr | grep Viet
+# get tesseract-ocr-vie-best - tesseract-ocr language files for Vietnamese (best)
 
 # Tesseract Chinese traditional vertical
 sudo apt-get install tesseract-ocr-chi-tra-vert-best tesseract-ocr-chi-tra-vert tesseract-ocr-chi-tra-best

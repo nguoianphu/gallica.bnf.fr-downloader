@@ -46,6 +46,12 @@ sudo apt-get install tesseract-ocr-chi-tra-vert-best tesseract-ocr-chi-tra-vert 
 # If pngquant is installed, OCRmyPDF will use it to perform quantize paletted images to reduce their size
 sudo apt install pngquant
 
+# Other packages
+ sudo apt install ghostscript \
+  fonts-droid-fallback \
+  jbig2dec \
+  unpaper
+
 ```
 
 ## Run ocrmypdf example:

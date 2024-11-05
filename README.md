@@ -64,7 +64,8 @@ FILE="your_pdf_file.pdf"
 ocrmypdf $OPTIONS "$FILE" "ocr_${FILE}"
 
 # Or you can run this in a folder to make ocr for all pdf files
-find . -printf '%p\n' -name '*.pdf' -exec ocrmypdf $OPTIONS '{}' '{}' \;
+mkdir -p ocr
+find . -printf '%p\n' -name '*.pdf' -exec ocrmypdf $OPTIONS '{}' ocr/'{}' \;
 
 ```
 
@@ -99,6 +100,7 @@ FILE="your_pdf_file.pdf"
 ocrmypdf $OPTIONS "$FILE" "ocr_${FILE}"
 
 # Or you can run this in a folder to make ocr for all pdf files
-find . -printf '%p\n' -name '*.pdf' -exec ocrmypdf $OPTIONS '{}' '{}' \;
+mkdir -p ocr
+find . -printf '%p\n' -name '*.pdf' -exec ocrmypdf $OPTIONS '{}' ocr/'{}' \;
 
 ```

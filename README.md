@@ -43,6 +43,9 @@ sudo apt-cache search tesseract-ocr | grep Viet
 # Tesseract Chinese traditional vertical
 sudo apt-get install tesseract-ocr-chi-tra-vert-best tesseract-ocr-chi-tra-vert tesseract-ocr-chi-tra-best
 
+# Or just one line
+sudo apt-get install tesseract-ocr-chi-tra-vert-best tesseract-ocr-vie* tesseract-ocr-fra* tesseract-ocr-eng
+
 # If pngquant is installed, OCRmyPDF will use it to perform quantize paletted images to reduce their size
 sudo apt install pngquant
 
@@ -58,7 +61,12 @@ sudo apt install pngquant
 
 ```
 export TMPDIR=$HOME/tmpdir
-export OPTIONS=' -l chi_tra_vert --jobs 2 --redo-ocr  --tesseract-timeout 600 --output-type pdf '
+
+# Traditional Chinese vertical
+# export OPTIONS=' -l chi_tra_vert --jobs 2 --redo-ocr  --tesseract-timeout 600 --output-type pdf '
+
+# French, Vietnemse, Chinese Traditional
+export OPTIONS=' -l fra+vie+chi_tra --redo-ocr --tesseract-timeout 600  --output-type pdf '
 
 FILE="your_pdf_file.pdf"
 ocrmypdf $OPTIONS "$FILE" "ocr_${FILE}"
@@ -94,7 +102,12 @@ sudo make install
 
 ```
 export TMPDIR=$HOME/tmpdir
-export OPTIONS=' -l chi_tra_vert --jobs 2 --redo-ocr  --tesseract-timeout 600 --optimize 2 --jbig2-lossy --output-type pdf '
+
+# Traditional Chinese vertical
+# export OPTIONS=' -l chi_tra_vert --jobs 2 --redo-ocr  --tesseract-timeout 600 --optimize 2 --jbig2-lossy --output-type pdf '
+
+# French, Vietnemse, Chinese Traditional
+export OPTIONS=' -l fra+vie+chi_tra --redo-ocr --tesseract-timeout 600  --output-type pdf '
 
 FILE="your_pdf_file.pdf"
 ocrmypdf $OPTIONS "$FILE" "ocr_${FILE}"

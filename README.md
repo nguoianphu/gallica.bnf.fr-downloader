@@ -19,8 +19,15 @@ python main.py
 
 ## Installing OCRmyPDF
 
-```
-sudo apt update
+```bash
+
+# Debian or Ubuntu: add these 2 lines into your sudo nano /etc/apt/sources.list (change bookworm to your release)
+
+deb http://deb.debian.org/debian bookworm main
+deb-src http://deb.debian.org/debian bookworm main
+
+# Then run
+sudo apt update --allow-insecure-repositories
 sudo apt install ocrmypdf
 
 # Fonts for Chinese

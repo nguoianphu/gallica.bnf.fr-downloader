@@ -21,6 +21,8 @@ python main.py
 
 ```bash
 
+sudo apt-get install apt-transport-https
+
 # Debian or Ubuntu: add these 2 lines into your sudo nano /etc/apt/sources.list (change bookworm to your release)
 
 deb http://deb.debian.org/debian bookworm main
@@ -36,28 +38,30 @@ sudo apt-get install fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho f
 # Tesseract
 echo "deb https://notesalexp.org/tesseract-ocr5/$(lsb_release -cs)/ $(lsb_release -cs) main" \
 | sudo tee /etc/apt/sources.list.d/notesalexp.list > /dev/null
+
+wget -O - https://notesalexp.org/debian/alexp_key.asc | sudo apt-key add -
+
+sudo apt-get update
+
 sudo apt update --allow-insecure-repositories
 
 # https://ocrmypdf.readthedocs.io/en/latest/languages.html#lang-packs
 # Display a list of all Tesseract language packs
-# Choose the -best version
-sudo apt-cache search tesseract-ocr
+# Search for your languges, e.g. Chinese
 sudo apt-cache search tesseract-ocr | grep Chinese
-# get tesseract-ocr-chi-tra-vert-best - tesseract-ocr language files for Chinese - Traditional (vertical) (best)
-sudo apt-cache search tesseract-ocr | grep Viet
-# get tesseract-ocr-vie-best - tesseract-ocr language files for Vietnamese (best)
+
 
 # Tesseract Chinese traditional vertical
-sudo apt-get install tesseract-ocr-chi-tra-vert-best tesseract-ocr-chi-tra-vert tesseract-ocr-chi-tra-best
+sudo apt-get -y install tesseract-ocr-chi-tra-vert tesseract-ocr-chi-tra-vert tesseract-ocr-chi-tra
 
 # Or just one line
-sudo apt-get install tesseract-ocr-chi-tra-vert-best tesseract-ocr-vie* tesseract-ocr-fra* tesseract-ocr-eng
+sudo apt-get -y install tesseract-ocr-chi-tra-vert tesseract-ocr-vie tesseract-ocr-fra tesseract-ocr-eng
 
 # If pngquant is installed, OCRmyPDF will use it to perform quantize paletted images to reduce their size
-sudo apt install pngquant
+sudo apt-get install pngquant -y
 
 # Other packages
- sudo apt install ghostscript \
+ sudo apt-get -y install ghostscript \
   fonts-droid-fallback \
   jbig2dec \
   unpaper

@@ -98,6 +98,11 @@ https://github.com/ocrmypdf/OCRmyPDF/blob/main/.docker/Dockerfile
 
 ```
 
+# Try
+sudo apt install jbig2enc
+
+# If can't use above command, have to:
+
 sudo apt install autotools-dev automake libtool libleptonica-dev gcc
 
 git clone https://github.com/agl/jbig2enc
